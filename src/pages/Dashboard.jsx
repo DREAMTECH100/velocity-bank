@@ -238,7 +238,7 @@ export default function Dashboard() {
             <div className="flex justify-between border-b pb-3">
               <div>
                 <p className="font-medium">Apple Store</p>
-                <p className="text-sm text-gray-500">Jan 18, 2026</p>
+                <p className="text-sm text-gray-500">Apr 18, 2023</p>
               </div>
               <p className="text-red-500 font-semibold">- $2,499</p>
             </div>
@@ -246,7 +246,7 @@ export default function Dashboard() {
             <div className="flex justify-between border-b pb-3">
               <div>
                 <p className="font-medium">Salary Deposit</p>
-                <p className="text-sm text-gray-500">Jan 15, 2026</p>
+                <p className="text-sm text-gray-500">Jun 15, 2023</p>
               </div>
               <p className="text-green-500 font-semibold">+ $45,000</p>
             </div>
@@ -254,7 +254,7 @@ export default function Dashboard() {
             <div className="flex justify-between">
               <div>
                 <p className="font-medium">Wire Transfer</p>
-                <p className="text-sm text-gray-500">Jan 10, 2026</p>
+                <p className="text-sm text-gray-500">Jul 10, 2023</p>
               </div>
               <p className="text-red-500 font-semibold">- $12,000</p>
             </div>

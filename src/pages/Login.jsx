@@ -6,8 +6,8 @@ export default function Login() {
   const navigate = useNavigate();
 
   // 🔐 CHANGE THIS ANYTIME
-  const MASTER_OTP = "123456";
-  const MASTER_PIN = "1234";
+  const MASTER_OTP = "234356";
+  const MASTER_PIN = "5689";
 
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -67,10 +67,11 @@ export default function Login() {
 
   return (
     <PageWrapper>
-      <div className="w-full max-w-md bg-card backdrop-blur-xl p-8 rounded-3xl shadow-xl">
+     <div className="w-full max-w-md bg-gray-800 p-8 rounded-3xl shadow-xl">
 
         <h1 className="text-3xl text-white font-bold">Velocity Bank</h1>
-        <p className="text-gray-400 text-sm mb-6">
+        
+        <p className="text-gray-800 text-sm mb-6">
           Demo Banking Simulation – Not a real financial institution
         </p>
 
@@ -108,8 +109,12 @@ export default function Login() {
               {loading ? "Sending Code..." : "Continue"}
             </button>
 
-            <p className="text-xs text-gray-400 text-center mt-3">
+            <p className="text-xs text-gray-800 text-center mt-3">
               Use any number for demo access
+            </p>
+
+ <p className="text-xs text-gray-300 text-center mt-3">
+              Enter registered phone number for velocity bank
             </p>
 
           </form>
