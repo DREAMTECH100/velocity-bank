@@ -15,15 +15,16 @@ const [error, setError] = useState("");
     setPin(pin.slice(0, -1));
   };
   const MASTER_PIN = "5689";
-  const handleSubmit = () => {
+ const handleSubmit = () => {
   if (pin.length === 4) {
     setLoading(true);
 
     setTimeout(() => {
       if (pin === MASTER_PIN) {
+        setError("");
         navigate("/success", { replace: true });
       } else {
-        alert("Incorrect PIN");
+        setError("Incorrect PIN. Please try again.");
         setPin("");
       }
 
@@ -31,7 +32,6 @@ const [error, setError] = useState("");
     }, 1800);
   }
 };
-
   return (
     <PageWrapper>
       <div className="bg-white p-10 rounded-2xl shadow-2xl w-[350px] text-center">
@@ -55,7 +55,11 @@ const [error, setError] = useState("");
             </div>
           ))}
         </div>
-
+{error && (
+  <p className="text-red-500 text-sm mt-2">
+    {error}
+  </p>
+)}
         {/* Keypad */}
         <div className="grid grid-cols-3 gap-4 mb-6">
 
