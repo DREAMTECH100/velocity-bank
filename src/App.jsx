@@ -7,6 +7,7 @@ import Verify from "./pages/Verify";
 import Success from "./pages/Success";
 import Login from "./pages/Login";
 import Deposit from "./pages/Deposit";
+import Account from "./pages/Account";
 import { useState } from "react";
 import PageLoader from "./components/PageLoader";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -28,6 +29,15 @@ export default function App() {
           element={
             <ProtectedRoute>
               <Dashboard setLoading={setLoading} />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/account"
+          element={
+            <ProtectedRoute>
+              <Account setLoading={setLoading} />
             </ProtectedRoute>
           }
         />
@@ -76,8 +86,6 @@ export default function App() {
             </ProtectedRoute>
           }
         />
-
-        
 
         <Route
           path="/success"

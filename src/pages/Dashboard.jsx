@@ -117,7 +117,7 @@ export default function Dashboard() {
     </button>
 
     <button
-      onClick={() => navigate("/accounts")}
+      onClick={() => navigate("/account")}
       className="text-left hover:text-gray-600"
     >
       Accounts
