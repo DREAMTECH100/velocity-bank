@@ -10,21 +10,27 @@ export default function Pin({ setLoading }) {
       setPin(pin + number);
     }
   };
-
+const [error, setError] = useState("");
   const handleDelete = () => {
     setPin(pin.slice(0, -1));
   };
-
+  const MASTER_PIN = "5689";
   const handleSubmit = () => {
-    if (pin.length === 4) {
-      setLoading(true);
+  if (pin.length === 4) {
+    setLoading(true);
 
-      setTimeout(() => {
-        setLoading(false);
+    setTimeout(() => {
+      if (pin === MASTER_PIN) {
         navigate("/success", { replace: true });
-      }, 1800); // realistic bank processing delay
-    }
-  };
+      } else {
+        alert("Incorrect PIN");
+        setPin("");
+      }
+
+      setLoading(false);
+    }, 1800);
+  }
+};
 
   return (
     <PageWrapper>

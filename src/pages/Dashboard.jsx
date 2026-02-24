@@ -48,7 +48,7 @@ export default function Dashboard() {
     middleName: "J",
     lastName: "Young",
     accountType: "Premium Account",
-    avatar: "https://i.pravatar.cc/150?img=12",
+    avatar: "/client.jpeg",
   };
 
   if (loading) {
