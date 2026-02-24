@@ -9,8 +9,8 @@ export default function Account() {
     middleName: "J",
     lastName: "Young",
     accountType: "Premium Checking Account",
-    accountNumber: "2025 5501 4789",
-    routingNumber: "110000000",
+    accountNumber: "2025 5501 8821",
+    routingNumber: "021000021",
     swift: "VLBKUS33",
     iban: "US29VLBK55014789202501",
     currency: "USD",
@@ -124,7 +124,7 @@ const handleBranchNotice = () => {
             <h3 className="text-lg font-semibold mb-4">Limits & Services</h3>
 
             <div className="space-y-3 text-sm text-gray-400">
-              <p>Daily Transfer Limit: $10,000</p>
+              <p>Daily Transfer Limit: $40,000</p>
               <p>ATM Withdrawal Limit: $2,500</p>
               <p>International Transfers: Enabled</p>
               <p>Virtual Card: Inactive (•••• 4589)</p>
