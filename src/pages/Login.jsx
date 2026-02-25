@@ -150,6 +150,10 @@ export default function Login() {
             }}
             className="space-y-6"
           >
+            <label className="text-sm text-gray-300">
+                OTP will expire after 72 hours
+              </label>
+            
             <div className="flex justify-between gap-2">
               {otpArray.map((digit, index) => (
                 <input
