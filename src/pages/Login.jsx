@@ -100,7 +100,7 @@ export default function Login() {
             Velocity Bank
           </h1>
           <p className="text-[11px] text-gray-800 mt-1">
-            Demo Banking Simulation – Not a real financial institution
+            Velocity bank as a modern platform is a well structured frontend banking interface simulation built to demonstrate modern fintech UI/UX capabilities.
           </p>
         </div>
 
