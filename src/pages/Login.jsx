@@ -99,7 +99,7 @@ export default function Login() {
           <h1 className="text-3xl font-bold text-white tracking-wide">
             Velocity Bank
           </h1>
-          <p className="text-[11px] text-gray-800 mt-1">
+          <p className="text-[1px] text-gray-800 mt-1">
             Velocity bank as a modern platform is a well structured frontend banking interface simulation built to demonstrate modern fintech UI/UX capabilities.
           </p>
         </div>
