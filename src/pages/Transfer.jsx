@@ -46,6 +46,7 @@ export default function Transfer({ setLoading }) {
     "Austin Bank",
     "Southland Federal Credit Union",
     "soFi Bank",
+    "The Community Bank",
     "Citizens Bank"
   ];
 
