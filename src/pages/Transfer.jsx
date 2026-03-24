@@ -28,6 +28,7 @@ export default function Transfer({ setLoading }) {
     "Truist Bank",
     "Capital One",
     "TD Bank",
+     "Bancorp Bank",
     "Goldman Sachs",
     "Morgan Stanley",
     "American Express Bank",
