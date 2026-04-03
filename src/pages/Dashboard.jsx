@@ -48,7 +48,7 @@ export default function Dashboard() {
     middleName: "",
     lastName: "malachovski",
     accountType: "Premium Account",
-    avatar: "/client.jpeg",
+    avatar: "/client2.jpeg",
   };
 
   if (loading) {
