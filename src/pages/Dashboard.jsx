@@ -44,9 +44,9 @@ export default function Dashboard() {
   };
 
   const user = {
-    firstName: "Fernando",
-    middleName: "",
-    lastName: "malachovski",
+    firstName: "Claudia",
+    middleName: "Ashlee",
+    lastName: "Addison",
     accountType: "Premium Account",
     avatar: "/client2.jpeg",
   };
