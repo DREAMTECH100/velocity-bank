@@ -5,9 +5,9 @@ export default function Account() {
   const [copied, setCopied] = useState("");
 
   const accountData = {
-    firstName: "Claudia",
-    middleName: "Ashlee",
-    lastName: "Addison",
+    firstName: "Arnett",
+    middleName: "Heather",
+    lastName: "",
     accountType: "Premium Checking Account",
     accountNumber: "2025 5501 8821",
     routingNumber: "021000021",
