@@ -1,5 +1,5 @@
 import PageWrapper from "../components/PageWrapper";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Account() {
   const [copied, setCopied] = useState("");
@@ -38,7 +38,26 @@ export default function Account() {
     }
   };
 
-  const [accountData] = useState(loadAccountData);
+  const [accountData, setAccountData] = useState(loadAccountData);
+
+  // Keep this page's name in sync with edits made on the Dashboard
+  // Settings panel, even if this page was already mounted when the
+  // edit happened:
+  // - "userProfileUpdated" fires in the *same* tab right after Dashboard
+  //   saves (the native storage event doesn't fire in the tab that made
+  //   the change, so we dispatch this one ourselves).
+  // - "storage" fires when the edit happens in a *different* tab/window.
+  useEffect(() => {
+    const refresh = () => setAccountData(loadAccountData());
+
+    window.addEventListener("userProfileUpdated", refresh);
+    window.addEventListener("storage", refresh);
+
+    return () => {
+      window.removeEventListener("userProfileUpdated", refresh);
+      window.removeEventListener("storage", refresh);
+    };
+  }, []);
 
   const [showNotice, setShowNotice] = useState(false);
 

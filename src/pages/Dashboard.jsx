@@ -136,6 +136,11 @@ export default function Dashboard() {
       // Storage can fail (e.g. quota exceeded on a very large image) —
       // the in-memory state is still updated, it just won't persist.
     }
+    // The native "storage" event only fires in *other* tabs/windows, never
+    // in the tab that made the change — so a page like Account.jsx that's
+    // already mounted in this same tab won't hear about the update that
+    // way. Dispatch our own event so any listening page can refresh live.
+    window.dispatchEvent(new CustomEvent("userProfileUpdated", { detail: draft }));
     setSettingsOpen(false);
   };
 
