@@ -38,9 +38,9 @@ export default function Dashboard() {
   const [passwordError, setPasswordError] = useState("");
 
   const defaultUser = {
-    firstName: "Arnett",
-    middleName: "Heather",
-    lastName: "",
+    firstName: "Claudia",
+    middleName: "A",
+    lastName: "Addison",
     accountType: "Premium Account",
     avatar: "/client2.jpeg",
     // Editable copy of the Login page's Master OTP. Login.jsx falls back
