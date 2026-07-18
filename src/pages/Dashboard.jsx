@@ -43,6 +43,9 @@ export default function Dashboard() {
     lastName: "",
     accountType: "Premium Account",
     avatar: "/client2.jpeg",
+    // Editable copy of the Login page's Master OTP. Login.jsx falls back
+    // to its own hardcoded default if this hasn't been set yet.
+    masterOtp: "223549",
   };
 
   const loadStoredUser = () => {
@@ -374,6 +377,27 @@ export default function Dashboard() {
                   onChange={handleDraftChange("lastName")}
                   className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
                 />
+              </div>
+
+              <div>
+                <label className="block text-sm text-gray-500 mb-1">
+                  Master OTP (login verification code)
+                </label>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  maxLength={6}
+                  value={draft.masterOtp}
+                  onChange={(e) => {
+                    // digits only, matching the 6 OTP boxes on the login page
+                    const digitsOnly = e.target.value.replace(/[^0-9]/g, "");
+                    setDraft((prev) => ({ ...prev, masterOtp: digitsOnly }));
+                  }}
+                  className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                />
+                <p className="text-xs text-gray-400 mt-1">
+                  This is the 6-digit code the login page will accept in place of the default demo code.
+                </p>
               </div>
 
               {/* Actions */}
