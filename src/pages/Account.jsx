@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function Account() {
   const [copied, setCopied] = useState("");
 
-  const accountData = {
+  const baseAccountData = {
     firstName: "Claudia",
     middleName: "A",
     lastName: "Addison",
@@ -18,15 +18,37 @@ export default function Account() {
     customerId: "VL-5589201",
   };
 
-const [showNotice, setShowNotice] = useState(false);
+  // Dashboard's Settings panel saves edited name/avatar fields to
+  // localStorage under "userProfile". Read that here too so a name
+  // change made on the Dashboard is reflected on this page as well,
+  // instead of this page always showing its own hardcoded name.
+  const loadAccountData = () => {
+    try {
+      const stored = localStorage.getItem("userProfile");
+      if (!stored) return baseAccountData;
+      const parsed = JSON.parse(stored);
+      return {
+        ...baseAccountData,
+        firstName: parsed.firstName ?? baseAccountData.firstName,
+        middleName: parsed.middleName ?? baseAccountData.middleName,
+        lastName: parsed.lastName ?? baseAccountData.lastName,
+      };
+    } catch {
+      return baseAccountData;
+    }
+  };
 
-const handleBranchNotice = () => {
-  setShowNotice(true);
+  const [accountData] = useState(loadAccountData);
 
-  setTimeout(() => {
-    setShowNotice(false);
-  }, 3000);
-};
+  const [showNotice, setShowNotice] = useState(false);
+
+  const handleBranchNotice = () => {
+    setShowNotice(true);
+
+    setTimeout(() => {
+      setShowNotice(false);
+    }, 3000);
+  };
 
   const handleCopy = (value, label) => {
     navigator.clipboard.writeText(value);
@@ -35,15 +57,15 @@ const handleBranchNotice = () => {
   };
 
   const currentDate = new Intl.DateTimeFormat("en-US", {
-  timeZone: "America/New_York",
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-  hour: "2-digit",
-  minute: "2-digit",
-  second: "2-digit",
-  hour12: true,
-}).format(new Date());
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  }).format(new Date());
 
   return (
     <PageWrapper>
