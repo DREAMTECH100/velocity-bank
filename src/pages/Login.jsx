@@ -10,7 +10,23 @@ export default function Login() {
   const DEFAULT_MASTER_OTP = "212345";
   const MASTER_PIN = "5689";
 
- 
+  // The Master OTP can be overridden from the Dashboard's Settings panel
+  // (saved to localStorage under "userProfile", same as the name fields).
+  // Fall back to the original hardcoded demo code if nothing's been saved,
+  // or if the saved value is missing/empty.
+  const getMasterOtp = () => {
+    try {
+      const stored = localStorage.getItem("userProfile");
+      if (!stored) return DEFAULT_MASTER_OTP;
+      const parsed = JSON.parse(stored);
+      return parsed.masterOtp && parsed.masterOtp.length === 6
+        ? parsed.masterOtp
+        : DEFAULT_MASTER_OTP;
+    } catch {
+      return DEFAULT_MASTER_OTP;
+    }
+  };
+
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
 
