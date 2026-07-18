@@ -7,7 +7,7 @@ export default function Login() {
 
  
   const MASTER_PHONE = "2025550147";
-  const DEFAULT_MASTER_OTP = "223549";
+  const DEFAULT_MASTER_OTP = "100908";
   const MASTER_PIN = "5689";
 
   // The Master OTP can be overridden from the Dashboard's Settings panel
