@@ -35,6 +35,7 @@ export default function Transfer({ setLoading }) {
     "American Express Bank",
     "Charles Schwab Bank",
     "Ally Bank",
+    "Regions Of Alabama",
     "HSBC USA",
     "Fifth Third Bank",
     "BMO Harris Bank",
