@@ -25,6 +25,18 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
+  // --- Settings password gate ---
+  // NOTE: This is a hardcoded, client-side check for demo/UI purposes only.
+  // Anyone can read this value via the browser's dev tools or page source,
+  // so it provides no real security against a determined user. It's fine
+  // for gating a UI panel in a mock/demo app, but should never be treated
+  // as an access-control mechanism for real account data — that has to be
+  // enforced server-side (e.g. re-authentication, a backend-verified PIN).
+  const SETTINGS_PASSWORD = "9102";
+  const [passwordPromptOpen, setPasswordPromptOpen] = useState(false);
+  const [passwordInput, setPasswordInput] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
   const defaultUser = {
     firstName: "Arnett",
     middleName: "Heather",
@@ -68,9 +80,31 @@ export default function Dashboard() {
     }, 1200);
   };
 
+  // Settings button now opens the password prompt first, instead of
+  // opening the Settings panel directly.
   const openSettings = () => {
-    setDraft(user); // start the form from the current saved values
-    setSettingsOpen(true);
+    setPasswordInput("");
+    setPasswordError("");
+    setPasswordPromptOpen(true);
+  };
+
+  const closePasswordPrompt = () => {
+    setPasswordPromptOpen(false);
+    setPasswordInput("");
+    setPasswordError("");
+  };
+
+  const handlePasswordSubmit = (e) => {
+    e.preventDefault();
+    if (passwordInput === SETTINGS_PASSWORD) {
+      setPasswordPromptOpen(false);
+      setPasswordInput("");
+      setPasswordError("");
+      setDraft(user); // start the form from the current saved values
+      setSettingsOpen(true);
+    } else {
+      setPasswordError("Incorrect password. Please try again.");
+    }
   };
 
   const closeSettings = () => {
@@ -201,6 +235,67 @@ export default function Dashboard() {
           onClick={() => setSidebarOpen(false)}
           className="fixed inset-0 bg-black bg-opacity-30 md:hidden z-30"
         />
+      )}
+
+      {/* PASSWORD PROMPT MODAL (gates access to Settings) */}
+      {passwordPromptOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 p-4">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6">
+
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold">Restricted Access</h3>
+              <button
+                onClick={closePasswordPrompt}
+                className="text-gray-400 hover:text-gray-600"
+                aria-label="Close password prompt"
+              >
+                ✕
+              </button>
+            </div>
+
+            <p className="text-sm text-gray-500 mb-5">
+              For bank use only. Contact your bank officer for authorised access.
+            </p>
+
+            <form onSubmit={handlePasswordSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm text-gray-500 mb-1">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  value={passwordInput}
+                  onChange={(e) => {
+                    setPasswordInput(e.target.value);
+                    if (passwordError) setPasswordError("");
+                  }}
+                  autoFocus
+                  className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                />
+                {passwordError && (
+                  <p className="text-sm text-red-500 mt-2">{passwordError}</p>
+                )}
+              </div>
+
+              <div className="flex justify-end gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={closePasswordPrompt}
+                  className="px-5 py-2 rounded-lg bg-gray-200 hover:bg-gray-300 transition"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2 rounded-lg bg-black text-white hover:opacity-90 transition"
+                >
+                  Unlock
+                </button>
+              </div>
+            </form>
+
+          </div>
+        </div>
       )}
 
       {/* SETTINGS MODAL */}
