@@ -45,6 +45,7 @@ export default function Transfer({ setLoading }) {
     "M&T Bank",
     "Huntington National Bank",
     "KeyBank",
+    "Connection Bnak",
     "Discover Bank",
     "Austin Bank",
     "Southland Federal Credit Union",
