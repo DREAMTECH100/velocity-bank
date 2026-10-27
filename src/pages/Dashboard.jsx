@@ -44,11 +44,11 @@ export default function Dashboard() {
   };
 
   const user = {
-    firstName: "Arnett",
-    middleName: "",
-    lastName: "Heather",
+    firstName: "Claudia",
+    middleName: "Ashlee",
+    lastName: "Addison",
     accountType: "Premium Account",
-    avatar: "/client3.jpeg",
+    avatar: "/client.jpeg",
   };
 
   if (loading) {

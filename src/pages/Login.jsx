@@ -7,7 +7,7 @@ export default function Login() {
 
  
   const MASTER_PHONE = "2025550147";
-  const MASTER_OTP = "911019";
+  const MASTER_OTP = "232602";
   const MASTER_PIN = "5689";
 
   const [step, setStep] = useState(1);
